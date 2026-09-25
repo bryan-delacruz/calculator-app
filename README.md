@@ -1,50 +1,47 @@
-# Welcome to your Expo app 👋
+# Calculator App | React Native + Expo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![React Native](https://img.shields.io/badge/react_native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Expo](https://img.shields.io/badge/expo-000020?style=for-the-badge&logo=expo&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
-## Get started
+An iOS-style calculator for Android, iOS and web, built with **React Native**, **Expo** and **Expo Router**.
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+- **Basic operations:** addition, subtraction, multiplication and division.
+- **Live formula and sub-result:** the screen shows the formula you type and a preview of the result before you press `=`.
+- **Editing tools:** clear (`C`), toggle sign (`+/-`) and delete the last digit.
+- **Input guards:** no leading zeros and only one decimal point per number.
+- **Reusable UI:** `CalculatorButton` and `ThemeText` components with a shared color palette.
 
-2. Start the app
+## Architecture
 
-   ```bash
-    npx expo start
-   ```
+All calculator logic lives in the `useCalculator` custom hook. The screen only renders state and calls actions.
 
-In the output, you'll find options to open the app in a
+- `number` holds the value being typed, `prevNumber` holds the sub-result and `formula` holds the full expression.
+- The last operator is kept in a `useRef`, so changing it does not cause extra renders.
+- An `Operator` enum maps each operation to its symbol.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Project structure
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+app/                         Screens (Expo Router)
+components/CalculatorButton  Keypad button
+components/ThemeText         Text with display variants
+hooks/useCalculator.tsx      Calculator state and logic
+constants/Colors.ts          Color palette
+styles/global-styles.ts      Shared styles
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Tech stack
 
-## Learn more
+React Native 0.76, Expo SDK 52, Expo Router 4, TypeScript, Jest (`jest-expo`).
 
-To learn more about developing your project with Expo, look at the following resources:
+## Getting started
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm install
+npx expo start
+```
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Open the app in Expo Go, an Android emulator, an iOS simulator or the browser.
