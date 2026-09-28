@@ -6,6 +6,8 @@
 
 An iOS-style calculator for Android, iOS and web, built with **React Native**, **Expo** and **Expo Router**.
 
+**Live (web build):** [calculator-app-bdlc.vercel.app](https://calculator-app-bdlc.vercel.app)
+
 ## Features
 
 - **Basic operations:** addition, subtraction, multiplication and division.
